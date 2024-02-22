@@ -1,7 +1,9 @@
+import Hero from "@/modules/hero/hero";
+
 export default function Home() {
   return (
-    <main>
-      hello!
+    <main className="container">
+      <Hero />
     </main>
   );
 }
