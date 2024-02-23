@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@radix-ui/react-aspect-ratio": "^1.0.3",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-hooks-library/core": "^0.6.0",
     "@redux-devtools/extension": "^3.3.0",

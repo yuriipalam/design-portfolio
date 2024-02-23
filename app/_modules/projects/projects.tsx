@@ -6,7 +6,7 @@ function Projects() {
     <>
       <Typography
         variant="h3"
-        className="text-center font-light uppercase tracking-wider"
+        className="text-center font-light uppercase tracking-wider mb-12"
       >
         Projects
       </Typography>

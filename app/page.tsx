@@ -4,16 +4,10 @@ import { ImagesListing } from "@/app/_modules/images-listing";
 
 export default function Home() {
   return (
-    <main className="container pb-40">
+    <main className="container pb-16">
       <Hero />
       <Projects />
-      <ImagesListing
-        imagesSrc={[
-          "/project-placeholder.png",
-          "/project-placeholder.png",
-          "/project-placeholder.png"
-        ]}
-      />
+      <ImagesListing />
     </main>
   );
 }

@@ -26,14 +26,13 @@ export function PreviewImage(props: PreviewImageProps) {
     (state) => state.setShowImagesSlider
   );
 
-  const router = useRouter();
-
   return (
     <div className="relative" ref={ref}>
       <motion.div
         className={classNames(
-          "absolute flex h-full w-full items-center justify-center rounded-3xl backdrop-blur-sm bg-black/50"
+          "absolute flex h-full w-full items-center justify-center rounded-3xl bg-black/50 backdrop-blur-sm"
         )}
+        initial={{ opacity: 0 }}
         animate={{
           opacity: isHovered ? 1 : 0,
           transition: { duration: 0.4 }
