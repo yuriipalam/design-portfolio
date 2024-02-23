@@ -6,7 +6,7 @@ export function MainNav({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
       <Link
-        href="/#"
+        href="/public#"
         className="hover:text-primary text-sm font-medium transition-colors"
       >
         Overview

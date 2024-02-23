@@ -1,5 +1,5 @@
-import { Typography } from "@/components/ui/typography";
-import { Button } from "@/components/ui/button";
+import { Typography } from "@/app/_ui/typography";
+import { Button } from "@/app/_ui/button";
 import Image from "next/image";
 
 function Hero() {

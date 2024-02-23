@@ -217,6 +217,18 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "1.0.1"
 
+"@react-hooks-library/core@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@react-hooks-library/core/-/core-0.6.0.tgz#c66c63f4466629ed2cc4041e941bc0880eda814f"
+  integrity sha512-GfkoQw82/rBrrj7Yv2oEP9V8IByBLRtfxzIs/cCwH3ZT7bUxcbD7B1hT1Au7AGrzSrGaLzKKJ61mc1a21VuK6g==
+  dependencies:
+    "@react-hooks-library/shared" "0.6.0"
+
+"@react-hooks-library/shared@0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@react-hooks-library/shared/-/shared-0.6.0.tgz#088144aeec89f8d7facaa3171e3fb45eb85ef2ae"
+  integrity sha512-3OV9hhZ3eNBYLGUn/SFJ4VQou9f72fuviNNX1Tj6Dfk1Ck6oeZ1HVI7omrRxrBaNEE0eKTyONwTPjEFhsUrZVg==
+
 "@rushstack/eslint-patch@^1.3.3":
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.7.2.tgz#2d4260033e199b3032a08b41348ac10de21c47e9"
