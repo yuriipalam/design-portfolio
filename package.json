@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-aspect-ratio": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@react-hooks-library/core": "^0.6.0",
+    "@redux-devtools/extension": "^3.3.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "class-variance-authority": "^0.7.0",
@@ -28,7 +30,8 @@
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@types/node": "^20",

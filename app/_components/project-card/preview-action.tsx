@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 interface PreviewActionsProps {
   isVisible: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   children: React.ReactNode;
 }
 
