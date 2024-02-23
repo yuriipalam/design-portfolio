@@ -6,6 +6,7 @@ import { useHover } from "@react-hooks-library/core";
 import classNames from "classnames";
 import { Code2, EyeIcon, GlobeIcon } from "lucide-react";
 import { PreviewAction } from "@/app/_components/project-card/preview-action";
+import { motion } from "framer-motion";
 
 interface PreviewImageProps {
   src: string;
@@ -20,28 +21,31 @@ export function PreviewImage(props: PreviewImageProps) {
 
   return (
     <div className="relative" ref={ref}>
-      <div
+      <motion.div
         className={classNames(
-          "absolute flex h-full w-full items-center justify-center rounded-3xl",
-          isHovered ? "bg-black/50" : "hidden"
+          "absolute flex h-full w-full items-center justify-center rounded-3xl bg-black/50 backdrop-blur-sm"
         )}
+        animate={{
+          opacity: isHovered ? 1 : 0,
+          transition: { duration: 0.25 }
+        }}
       >
         <div className={classNames("z-10 flex gap-4")}>
           {props.previewUrl && (
-            <PreviewAction onClick={() => {}}>
+            <PreviewAction isVisible={isHovered} onClick={() => {}}>
               <GlobeIcon strokeWidth={1} className="text-slate-200" />
             </PreviewAction>
           )}
-          <PreviewAction onClick={() => {}}>
+          <PreviewAction isVisible={isHovered} onClick={() => {}}>
             <EyeIcon strokeWidth={1} className="text-slate-200" />
           </PreviewAction>
           {props.sourceUrl && (
-            <PreviewAction onClick={() => {}}>
+            <PreviewAction isVisible={isHovered} onClick={() => {}}>
               <Code2 strokeWidth={1} className="text-slate-200" />
             </PreviewAction>
           )}
         </div>
-      </div>
+      </motion.div>
       <Image
         src={props.src}
         width={300}
