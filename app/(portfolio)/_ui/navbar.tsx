@@ -6,8 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger
-} from "@/app/_ui/dialog";
-import { Button } from "@/app/_ui/button";
+} from "@/app/(portfolio)/_ui/dialog";
+import { Button } from "@/app/(portfolio)/_ui/button";
 import { Linkedin, Mail } from "lucide-react";
 
 function Navbar() {

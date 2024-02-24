@@ -5,7 +5,7 @@ import { useRef } from "react";
 import { useHover } from "@react-hooks-library/core";
 import classNames from "classnames";
 import { Code2, EyeIcon, GlobeIcon } from "lucide-react";
-import { PreviewAction } from "@/app/_components/project-card/preview-action";
+import { PreviewAction } from "@/app/(portfolio)/_components/project-card/preview-action";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useImagesSliderStore } from "@/stores/store";

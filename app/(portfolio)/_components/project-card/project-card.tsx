@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Typography } from "@/app/_ui/typography";
+import { Typography } from "@/app/(portfolio)/_ui/typography";
 import { PreviewImage } from "./preview-image";
 
 interface ProjectCardProps {
