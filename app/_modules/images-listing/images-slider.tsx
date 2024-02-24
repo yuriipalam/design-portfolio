@@ -23,6 +23,20 @@ function ImagesSlider() {
     useImagesSliderStore.setState({ showImagesSlider: false });
   });
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        useImagesSliderStore.setState({ showImagesSlider: false });
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <AnimatePresence>
       {showImagesSlider && (
