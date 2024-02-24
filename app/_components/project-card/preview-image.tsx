@@ -35,7 +35,7 @@ export function PreviewImage(props: PreviewImageProps) {
         initial={{ opacity: 0 }}
         animate={{
           opacity: isHovered ? 1 : 0,
-          transition: { duration: 0.4 }
+          transition: { duration: 0.2 }
         }}
       >
         <div className={classNames("z-10 flex gap-4")}>

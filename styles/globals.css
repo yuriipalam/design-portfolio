@@ -36,3 +36,7 @@
     --radius: 0.5rem;
   }
 }
+
+.container {
+  @apply mx-auto px-6;
+}
