@@ -3,11 +3,13 @@
 import { Typography } from "@/app/_ui/typography";
 import { Button } from "@/app/_ui/button";
 import Image from "next/image";
+import { Spotlight } from "@/app/_components/spotlight";
 
 function Hero() {
   return (
     <div className="flex flex-col-reverse items-center gap-8 max-xl:mb-24 xl:flex-row xl:justify-between xl:gap-5">
       <div className="flex max-w-2xl flex-grow flex-col items-start justify-center xl:h-[80vh]">
+        <Spotlight fill="#FF7AC6" className="-top-20" />
         <Typography variant="h1" className="mb-2">
           Ademi Syrgabaeva
         </Typography>
