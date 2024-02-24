@@ -1,3 +1,5 @@
+"use client";
+
 import { Typography } from "@/app/_ui/typography";
 import { Button } from "@/app/_ui/button";
 import Image from "next/image";
@@ -19,7 +21,16 @@ function Hero() {
           aesthetics, consistently striving to create designs that not only
           captivate visually but also enhance user experiences.
         </Typography>
-        <Button>See my projects</Button>
+        <Button
+          onClick={() => {
+            window.scrollTo({
+              top: document.body.querySelector("#projects")?.clientHeight,
+              behavior: "smooth"
+            });
+          }}
+        >
+          See my projects
+        </Button>
       </div>
       <div className="max-xl:max-w-[400px]">
         <Image

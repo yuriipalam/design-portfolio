@@ -11,7 +11,10 @@ function Projects() {
       >
         Projects
       </Typography>
-      <div className="grid max-w-fit grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      <div
+        id="projects"
+        className="grid max-w-fit grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+      >
         <ProjectCard
           title="Food Delivery Service"
           description="Complete UI/UX design created on Figma. The project was created as a part of the university course."
