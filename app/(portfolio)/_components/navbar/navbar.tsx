@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Dialog,
@@ -12,10 +14,10 @@ import { Linkedin, Mail } from "lucide-react";
 import { useProfileContactState } from "@/app/(portfolio)/_entities/profile";
 
 function Navbar() {
-  const name = useProfileContactState.getState().name;
-  const email = useProfileContactState.getState().email;
-  const linkedinUrl = useProfileContactState.getState().linkedinUrl;
-  const resumeUrl = useProfileContactState.getState().resumeUrl;
+  const name = useProfileContactState((state) => state.name);
+  const email = useProfileContactState((state) => state.email);
+  const linkedinUrl = useProfileContactState((state) => state.linkedinUrl);
+  const resumeUrl = useProfileContactState((state) => state.resumeUrl);
 
   return (
     <nav className="mb-6 flex h-16 w-full flex-grow items-center justify-end">

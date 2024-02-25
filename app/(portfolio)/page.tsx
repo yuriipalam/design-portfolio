@@ -1,6 +1,6 @@
 import { Hero, Projects, ImagesSlider } from "@/app/(portfolio)/_modules";
 import { getProfile } from "@/app/(portfolio)/_entities/profile/api";
-import { useProfileContactState } from "@/app/(portfolio)/_entities/profile";
+import { ClientSideProfileContactStateInitializer } from "@/app/(portfolio)/_entities/profile/state/state";
 
 export default async function Home() {
   const profile = await getProfile();
@@ -8,15 +8,14 @@ export default async function Home() {
     throw new Error("Something went wrong...");
   }
 
-  useProfileContactState.setState({
-    name: profile.name,
-    email: profile.email,
-    linkedinUrl: profile.linkedinUrl,
-    resumeUrl: profile.resumeUrl
-  });
-
   return (
     <main className="container pb-16">
+      <ClientSideProfileContactStateInitializer
+        name={profile.name}
+        email={profile.email}
+        resumeUrl={profile.resumeUrl}
+        linkedinUrl={profile.linkedinUrl}
+      />
       <Hero profile={profile} />
       <Projects />
       <ImagesSlider />
