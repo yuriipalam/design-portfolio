@@ -3,7 +3,6 @@
 import { Typography } from "@/app/(portfolio)/_ui/typography";
 import { Button } from "@/app/(portfolio)/_ui/button";
 import Image from "next/image";
-import { Spotlight } from "@/app/(portfolio)/_components/spotlight";
 
 function Hero() {
   return (

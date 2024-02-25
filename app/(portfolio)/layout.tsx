@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "@/styles/globals.css";
 import React from "react";
-import { Navbar } from "@/app/(portfolio)/_ui/navbar";
+import { Navbar } from "@/app/(portfolio)/_components/navbar/navbar";
 
 const inter = Montserrat({ subsets: ["latin"] });
 

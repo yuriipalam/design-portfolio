@@ -1,32 +1,9 @@
-"use client";
-
-import React, { useEffect, useState } from "react";
-import { ProjectCard } from "../../_components/project-card";
 import { Typography } from "@/app/(portfolio)/_ui/typography";
-import { createClient } from "next-sanity";
-import { structureTool } from 'sanity/structure'
+import {getProjects} from "@/app/(portfolio)/_entities/project/api";
+import {ProjectCard} from "@/app/(portfolio)/_components";
 
-function Projects() {
-  const client = createClient({
-    projectId: "fz5gfpod",
-    dataset: "production",
-    apiVersion: "2022-03-07",
-    useCdn: false,
-  });
-
-  const [projects, setProjects] = useState<any[]>([]);
-
-  useEffect(() => {
-    const projects = async () => {
-      return await client.fetch(
-        `*[_type == "project"]{..., "previewImage": previewImage.asset->url}`
-      );
-    };
-
-    projects().then((data) => {
-      setProjects(data);
-    });
-  }, []);
+async function Projects() {
+  const projects = await getProjects();
 
   return (
     <div className="flex flex-col items-center">
@@ -42,9 +19,9 @@ function Projects() {
       >
         {projects &&
           projects.map((project) => {
-            console.log(project);
             return (
               <ProjectCard
+                projectId={project._id}
                 key={project._id}
                 title={project.title}
                 description={project.description}
@@ -54,13 +31,6 @@ function Projects() {
               />
             );
           })}
-        {/*<ProjectCard*/}
-        {/*  title="Food Delivery Service"*/}
-        {/*  description="Complete UI/UX design created on Figma. The project was created as a part of the university course."*/}
-        {/*  previewImage="/project-placeholder.png"*/}
-        {/*  previewUrl="#"*/}
-        {/*  sourceUrl="#"*/}
-        {/*/>*/}
       </div>
     </div>
   );

@@ -1,17 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useHover } from "@react-hooks-library/core";
 import classNames from "classnames";
 import { Code2, EyeIcon, GlobeIcon } from "lucide-react";
 import { PreviewAction } from "@/app/(portfolio)/_components/project-card/preview-action";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useImagesSliderStore } from "@/stores/store";
-import { useRouter } from "next/navigation";
+import {
+  setImages,
+  setShowImagesSlider
+} from "@/app/(portfolio)/_entities/project/model";
+import { getProjectImages } from "@/app/(portfolio)/_entities/project/api";
 
 interface PreviewImageProps {
+  projectId: string;
   src: string;
   alt: string;
   previewUrl?: string;
@@ -22,9 +26,10 @@ export function PreviewImage(props: PreviewImageProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const isHovered = useHover(ref);
 
-  const setShowImagesSlider = useImagesSliderStore(
-    (state) => state.setShowImagesSlider
-  );
+  const fetchImages = async () =>
+    await getProjectImages(props.projectId).then((images) =>
+      setImages(images ?? [])
+    );
 
   return (
     <div className="relative" ref={ref}>
@@ -50,6 +55,7 @@ export function PreviewImage(props: PreviewImageProps) {
             isVisible={isHovered}
             onClick={() => {
               setShowImagesSlider(true);
+              fetchImages();
             }}
           >
             <EyeIcon strokeWidth={1} className="text-slate-200" />
