@@ -1,6 +1,7 @@
 import { Hero, Projects, ImagesSlider } from "@/app/(portfolio)/_modules";
 import { getProfile } from "@/app/(portfolio)/_entities/profile/api";
 import { ClientSideProfileContactStateInitializer } from "@/app/(portfolio)/_entities/profile/state/state";
+import { Loader } from "@/app/(portfolio)/_ui/loader";
 
 export default async function Home() {
   const profile = await getProfile();

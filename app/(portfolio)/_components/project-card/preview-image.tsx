@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useHover } from "@react-hooks-library/core";
 import classNames from "classnames";
 import { Code2, EyeIcon, GlobeIcon } from "lucide-react";
