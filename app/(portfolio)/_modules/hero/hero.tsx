@@ -3,24 +3,24 @@
 import { Typography } from "@/app/(portfolio)/_ui/typography";
 import { Button } from "@/app/(portfolio)/_ui/button";
 import Image from "next/image";
+import { ProfileType } from "@/app/(portfolio)/_entities/profile/model";
 
-function Hero() {
+interface HeroProps {
+  profile: ProfileType;
+}
+
+function Hero(props: HeroProps) {
   return (
     <div className="flex flex-col-reverse items-center gap-8 max-xl:mb-24 xl:flex-row xl:justify-between xl:gap-5">
       <div className="flex max-w-2xl flex-grow flex-col items-start justify-center xl:h-[80vh]">
-        {/*<Spotlight fill="#FF7AC6" className="-top-20" />*/}
         <Typography variant="h1" className="mb-2">
-          Ademi Syrgabaeva
+          {props.profile.name}
         </Typography>
         <Typography variant="h2" className="mb-8 text-lg">
-          UI/UX Designer, Computer Science student at ELTE
+          {props.profile.role}
         </Typography>
         <Typography variant="p" className="mb-4 text-sm">
-          As a dedicated and passionate UX/Ul designer with three years of
-          hands-on experience, Iam currently studying at Eötvös Loránd
-          University. I thrive on the intersection of functionality and
-          aesthetics, consistently striving to create designs that not only
-          captivate visually but also enhance user experiences.
+          {props.profile.description}
         </Typography>
         <Button
           onClick={() => {
@@ -36,14 +36,14 @@ function Hero() {
       <div className="max-xl:max-w-[400px]">
         <Image
           priority
-          src="/images/ademi.png"
+          src={props.profile.pictureUrl}
           width={500}
           height={500}
-          alt="Ademi Syrgabaeva"
+          alt={props.profile.name + " profile picture"}
         />
       </div>
     </div>
   );
 }
 
-export default Hero;
+export { Hero };

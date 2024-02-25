@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import "@/styles/globals.css";
+import "@/styles/portfolio.css";
 import React from "react";
 import { Navbar } from "@/app/(portfolio)/_components/navbar/navbar";
 

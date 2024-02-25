@@ -1,11 +1,23 @@
-import { Hero } from "@/app/(portfolio)/_modules/hero";
-import { Projects } from "@/app/(portfolio)/_modules/projects";
-import { ImagesSlider } from "@/app/(portfolio)/_modules/images-slider";
+import { Hero, Projects, ImagesSlider } from "@/app/(portfolio)/_modules";
+import { getProfile } from "@/app/(portfolio)/_entities/profile/api";
+import { useProfileContactState } from "@/app/(portfolio)/_entities/profile";
 
-export default function Home() {
+export default async function Home() {
+  const profile = await getProfile();
+  if (!profile) {
+    throw new Error("Something went wrong...");
+  }
+
+  useProfileContactState.setState({
+    name: profile.name,
+    email: profile.email,
+    linkedinUrl: profile.linkedinUrl,
+    resumeUrl: profile.resumeUrl
+  });
+
   return (
     <main className="container pb-16">
-      <Hero />
+      <Hero profile={profile} />
       <Projects />
       <ImagesSlider />
     </main>

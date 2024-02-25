@@ -38,7 +38,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
           title: "Email"
         },
         {
-          name: "linkedin",
+          name: "linkedinUrl",
           type: "url",
           title: "LinkedIn"
         }

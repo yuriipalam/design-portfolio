@@ -1,6 +1,6 @@
 import { Typography } from "@/app/(portfolio)/_ui/typography";
-import {getProjects} from "@/app/(portfolio)/_entities/project/api";
-import {ProjectCard} from "@/app/(portfolio)/_components";
+import { getProjects } from "@/app/(portfolio)/_entities/project/api";
+import { ProjectCard } from "@/app/(portfolio)/_components";
 
 async function Projects() {
   const projects = await getProjects();
@@ -36,4 +36,4 @@ async function Projects() {
   );
 }
 
-export default Projects;
+export { Projects };

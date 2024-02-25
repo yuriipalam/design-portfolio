@@ -17,7 +17,6 @@ function ImagesSlider() {
   const showImagesSlider = getShowImagesSlider();
 
   useEffect(() => {
-    console.log("useEffect", showImagesSlider);
     document.body.classList.toggle("overflow-hidden", showImagesSlider);
   }, [showImagesSlider]);
 
@@ -80,15 +79,16 @@ function ImagesSlider() {
                   ref={ref}
                 >
                   {projectImages.map((src, index) => {
-                   console.log(src);
-                    return <Image
-                      key={index}
-                      src={src}
-                      width={1280}
-                      height={720}
-                      alt={"Preview " + index + 1}
-                      className="mb-8 max-h-[720px] rounded-3xl md:mb-12"
-                    />
+                    return (
+                      <Image
+                        key={index}
+                        src={src}
+                        width={1280}
+                        height={720}
+                        alt={"Preview " + index + 1}
+                        className="mb-8 max-h-[720px] rounded-3xl md:mb-12"
+                      />
+                    );
                   })}
                 </div>
               </div>
@@ -100,4 +100,4 @@ function ImagesSlider() {
   );
 }
 
-export default ImagesSlider;
+export { ImagesSlider };

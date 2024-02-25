@@ -1,3 +1,5 @@
+"use server";
+
 import { client } from "@/sanity/lib/client";
 import { ProjectType } from "@/app/(portfolio)/_entities/project/model";
 
@@ -14,7 +16,6 @@ async function getProjectImages(
   const params = { projectId };
 
   const result = await client.fetch(query, params);
-  console.log(result);
 
   if (result) {
     return Object.entries(result as keyof Record<string, string>).map(
