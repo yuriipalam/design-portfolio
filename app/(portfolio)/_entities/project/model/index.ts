@@ -1,3 +1,5 @@
+"use client";
+
 import { create } from "zustand";
 
 interface ImagesSliderState {
@@ -14,14 +16,5 @@ const useImagesSliderStore = create<ImagesSliderState>()((set) => ({
   setImages: (images) => set({ images: images })
 }));
 
-const getShowImagesSlider = () =>
-  useImagesSliderStore((state) => state.showImagesSlider);
-const setShowImagesSlider = (show: boolean) => {
-  useImagesSliderStore.setState({ showImagesSlider: show });
-};
-const getImages = () => useImagesSliderStore((state) => state.images);
-const setImages = (images: string[]) =>
-  useImagesSliderStore.setState({ images: images });
-
-export { getShowImagesSlider, setShowImagesSlider, getImages, setImages };
+export { useImagesSliderStore };
 export type { ProjectType } from "./types";

@@ -10,22 +10,12 @@ import {
 import { Button } from "@/app/(portfolio)/_ui/button";
 import { Linkedin, Mail } from "lucide-react";
 import { useProfileContactState } from "@/app/(portfolio)/_entities/profile";
-import { useMemo } from "react";
 
 function Navbar() {
-  const [name, email, linkedinUrl, resumeUrl] = useMemo(() => {
-    return [
-      useProfileContactState.getState().name,
-      useProfileContactState.getState().email,
-      useProfileContactState.getState().linkedinUrl,
-      useProfileContactState.getState().resumeUrl
-    ];
-  }, [
-    useProfileContactState.getState().name,
-    useProfileContactState.getState().email,
-    useProfileContactState.getState().linkedinUrl,
-    useProfileContactState.getState().resumeUrl
-  ]);
+  const name = useProfileContactState.getState().name;
+  const email = useProfileContactState.getState().email;
+  const linkedinUrl = useProfileContactState.getState().linkedinUrl;
+  const resumeUrl = useProfileContactState.getState().resumeUrl;
 
   return (
     <nav className="mb-6 flex h-16 w-full flex-grow items-center justify-end">

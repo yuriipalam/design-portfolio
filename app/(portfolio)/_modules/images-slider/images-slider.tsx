@@ -6,15 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 import classNames from "classnames";
 import { X } from "lucide-react";
-import {
-  getImages,
-  setShowImagesSlider,
-  getShowImagesSlider
-} from "@/app/(portfolio)/_entities/project/model";
+import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
 
 function ImagesSlider() {
-  const projectImages = getImages();
-  const showImagesSlider = getShowImagesSlider();
+  const projectImages = useImagesSliderStore((state) => state.images);
+  const showImagesSlider = useImagesSliderStore(
+    (state) => state.showImagesSlider
+  );
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", showImagesSlider);
@@ -22,13 +20,13 @@ function ImagesSlider() {
 
   const ref = useRef<HTMLDivElement | null>(null);
   useClickOutside(ref, () => {
-    setShowImagesSlider(false);
+    useImagesSliderStore.setState({ showImagesSlider: false });
   });
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setShowImagesSlider(false);
+        useImagesSliderStore.setState({ showImagesSlider: false });
       }
     };
 
@@ -70,7 +68,9 @@ function ImagesSlider() {
           >
             <X
               className="fixed left-3 top-3 z-20 text-slate-300 transition-colors hover:cursor-pointer hover:text-white 2xl:left-5 2xl:top-5"
-              onClick={() => setShowImagesSlider(false)}
+              onClick={() =>
+                useImagesSliderStore.setState({ showImagesSlider: false })
+              }
             />
             <div className="fixed left-0 top-0 z-10 h-screen w-screen overflow-y-auto">
               <div className="flex flex-col items-center px-12">

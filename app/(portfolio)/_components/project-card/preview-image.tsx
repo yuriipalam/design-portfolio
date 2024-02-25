@@ -8,10 +8,7 @@ import { Code2, EyeIcon, GlobeIcon } from "lucide-react";
 import { PreviewAction } from "@/app/(portfolio)/_components/project-card/preview-action";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import {
-  setImages,
-  setShowImagesSlider
-} from "@/app/(portfolio)/_entities/project/model";
+import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
 import { getProjectImages } from "@/app/(portfolio)/_entities/project/api";
 
 interface PreviewImageProps {
@@ -28,7 +25,7 @@ export function PreviewImage(props: PreviewImageProps) {
 
   const fetchImages = async () =>
     await getProjectImages(props.projectId).then((images) =>
-      setImages(images ?? [])
+      useImagesSliderStore.setState({ images })
     );
 
   return (
@@ -54,8 +51,8 @@ export function PreviewImage(props: PreviewImageProps) {
           <PreviewAction
             isVisible={isHovered}
             onClick={() => {
-              setShowImagesSlider(true);
               fetchImages();
+              useImagesSliderStore.setState({ showImagesSlider: true });
             }}
           >
             <EyeIcon strokeWidth={1} className="text-slate-200" />
