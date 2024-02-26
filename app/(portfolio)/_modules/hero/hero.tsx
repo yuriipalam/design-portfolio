@@ -33,13 +33,22 @@ function Hero(props: HeroProps) {
           See my projects
         </Button>
       </div>
-      <div className="max-xl:max-w-[400px]">
+      <div className="relative h-[600px] w-[600px] max-xl:max-w-[400px]">
+        <Image
+          priority
+          width={500}
+          height={500}
+          src="/hero-avatar-background.svg"
+          alt="Hero avatar background"
+          className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+        />
         <Image
           priority
           src={props.profile.pictureUrl}
-          width={500}
-          height={500}
+          width={600}
+          height={600}
           alt={props.profile.name + " profile picture"}
+          className="absolute z-20"
         />
       </div>
     </div>
