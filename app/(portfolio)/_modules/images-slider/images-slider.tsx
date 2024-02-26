@@ -16,21 +16,34 @@ function ImagesSlider() {
   );
 
   const [imagesLoaded, setImagesLoaded] = useState<Record<number, boolean>>({});
+  const [imagesReady, setImagesReady] = useState(false);
 
   useEffect(() => {
-    const initialLoadState = projectImages.reduce<Record<number, boolean>>(
+    const loadState = projectImages.reduce<Record<number, boolean>>(
       (acc, _, index) => {
         acc[index] = false;
         return acc;
       },
       {}
     );
-    setImagesLoaded(initialLoadState);
+    setImagesLoaded(loadState);
   }, [projectImages]);
 
   const handleImageLoad = (index: number) => {
     setImagesLoaded((prev) => ({ ...prev, [index]: true }));
   };
+
+  useEffect(() => {
+    if (
+      showImagesSlider &&
+      Object.values(imagesLoaded).length > 0 &&
+      Object.values(imagesLoaded).every((value) => value)
+    ) {
+      setImagesReady(true);
+    } else if (!showImagesSlider) {
+      setImagesReady(false);
+    }
+  }, [imagesLoaded, showImagesSlider]);
 
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", showImagesSlider);
@@ -76,17 +89,16 @@ function ImagesSlider() {
           !showImagesSlider && "pointer-events-none"
         )}
       />
-      {showImagesSlider &&
-        Object.values(imagesLoaded).some((loaded) => !loaded) && (
-          <div className="fixed left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
-            <Loader textColor="light" />
-          </div>
-        )}
+      {showImagesSlider && !imagesReady && (
+        <div className="fixed left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
+          <Loader textColor="light" />
+        </div>
+      )}
       <AnimatePresence>
         {showImagesSlider && (
           <motion.div
             {...animationConfig}
-            animate={animationConfig.animate(showImagesSlider)}
+            animate={animationConfig.animate(imagesReady)}
             className={classNames(
               "absolute z-20",
               !showImagesSlider && "pointer-events-none"

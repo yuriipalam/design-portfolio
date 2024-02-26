@@ -20,7 +20,9 @@ const nextConfig = {
         hostname: "cdn.sanity.io",
         pathname: "/images/**/*",
       }
-    ]
+    ],
+    disableStaticImages: true,
+    minimumCacheTTL: 0,
   }
 };
 

@@ -16,7 +16,7 @@ function Hero(props: HeroProps) {
         <Typography variant="h1" className="mb-2">
           {props.profile.name}
         </Typography>
-        <Typography variant="h2" className="mb-8 text-lg">
+        <Typography variant="h2" className="mb-8 text-lg sm:text-xl">
           {props.profile.role}
         </Typography>
         <Typography variant="p" className="mb-4 text-sm">
@@ -40,7 +40,7 @@ function Hero(props: HeroProps) {
           height={500}
           src="/hero-avatar-background.svg"
           alt="Hero avatar background"
-          className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
         />
         <Image
           priority
@@ -48,7 +48,7 @@ function Hero(props: HeroProps) {
           width={600}
           height={600}
           alt={props.profile.name + " profile picture"}
-          className="absolute z-20"
+          className="absolute z-10"
         />
       </div>
     </div>
