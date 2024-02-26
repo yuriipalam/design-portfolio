@@ -105,7 +105,7 @@ function ImagesSlider() {
                         height={720}
                         alt={"Preview " + index + 1}
                         className={classNames(
-                          "mb-8 max-h-[720px] rounded-3xl transition-opacity duration-200 md:mb-12",
+                          "mb-8 aspect-video rounded-3xl object-cover object-center transition-opacity duration-200 md:mb-12",
                           imagesLoaded[index] ? "opacity-100" : "opacity-0"
                         )}
                         onLoad={() => handleImageLoad(index)}
