@@ -26,7 +26,7 @@ function ClientSideProfileContactStateInitializer({
       });
       initialized.current = true;
     }
-  }, [name, email, resumeUrl, linkedinUrl]); // Dependencies ensure this effect only runs if one of these props changes.
+  }, [name, email, resumeUrl, linkedinUrl]);
 
   return null;
 }
