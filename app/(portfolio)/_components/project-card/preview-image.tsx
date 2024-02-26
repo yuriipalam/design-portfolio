@@ -71,7 +71,7 @@ export function PreviewImage(props: PreviewImageProps) {
         width={300}
         height={300}
         alt={props.alt}
-        className="rounded-3xl"
+        className="aspect-square h-full w-full rounded-3xl object-cover object-center"
       />
     </div>
   );

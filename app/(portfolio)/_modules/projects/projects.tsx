@@ -15,7 +15,7 @@ async function Projects() {
       </Typography>
       <div
         id="projects"
-        className="grid max-w-fit grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+        className="grid max-w-fit grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
       >
         {projects &&
           projects.map((project) => {
