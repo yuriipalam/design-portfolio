@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useClickOutside } from "@react-hooks-library/core";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { X } from "lucide-react";
 import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
@@ -14,6 +14,22 @@ function ImagesSlider() {
     (state) => state.showImagesSlider
   );
 
+  const [imagesLoaded, setImagesLoaded] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    const initialLoadState = projectImages.reduce<Record<number, boolean>>(
+      (acc, _, index) => {
+        acc[index] = false;
+        return acc;
+      },
+      {}
+    );
+    setImagesLoaded(initialLoadState);
+  }, [projectImages]);
+  const handleImageLoad = (index: number) => {
+    setImagesLoaded((prev) => ({ ...prev, [index]: true }));
+  };
+
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", showImagesSlider);
   }, [showImagesSlider]);
@@ -21,12 +37,14 @@ function ImagesSlider() {
   const ref = useRef<HTMLDivElement | null>(null);
   useClickOutside(ref, () => {
     useImagesSliderStore.setState({ showImagesSlider: false });
+    useImagesSliderStore.setState({ images: [] });
   });
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         useImagesSliderStore.setState({ showImagesSlider: false });
+        useImagesSliderStore.setState({ images: [] });
       }
     };
 
@@ -86,7 +104,11 @@ function ImagesSlider() {
                         width={1280}
                         height={720}
                         alt={"Preview " + index + 1}
-                        className="mb-8 max-h-[720px] rounded-3xl md:mb-12"
+                        className={classNames(
+                          "mb-8 max-h-[720px] rounded-3xl transition-opacity duration-200 md:mb-12",
+                          imagesLoaded[index] ? "opacity-100" : "opacity-0"
+                        )}
+                        onLoad={() => handleImageLoad(index)}
                       />
                     );
                   })}

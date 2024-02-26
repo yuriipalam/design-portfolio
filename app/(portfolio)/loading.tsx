@@ -1,4 +1,3 @@
-import { Typography } from "@/app/(portfolio)/_ui/typography";
 import { Loader } from "@/app/(portfolio)/_ui/loader";
 
 export default function Loading() {
