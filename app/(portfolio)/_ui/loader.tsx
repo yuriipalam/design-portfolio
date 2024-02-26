@@ -1,10 +1,20 @@
 import { Loader2 } from "lucide-react";
+import classNames from "classnames";
 
-function Loader() {
+interface LoaderProps {
+  textColor: "dark" | "light";
+}
+
+function Loader(props: LoaderProps) {
+  const textColor = classNames({
+    "text-slate-800": props.textColor === "dark",
+    "text-slate-200": props.textColor === "light"
+  });
+
   return (
     <div className="flex gap-1">
       <Loader2 width={32} className="animate-spin text-primary" />
-      <p className="text-slate-800">Loading...</p>
+      <p className={textColor}>Loading...</p>
     </div>
   );
 }

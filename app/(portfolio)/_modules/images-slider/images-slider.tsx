@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { X } from "lucide-react";
 import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
+import { Loader } from "@/app/(portfolio)/_ui/loader";
 
 function ImagesSlider() {
   const projectImages = useImagesSliderStore((state) => state.images);
@@ -26,6 +27,7 @@ function ImagesSlider() {
     );
     setImagesLoaded(initialLoadState);
   }, [projectImages]);
+
   const handleImageLoad = (index: number) => {
     setImagesLoaded((prev) => ({ ...prev, [index]: true }));
   };
@@ -74,6 +76,12 @@ function ImagesSlider() {
           !showImagesSlider && "pointer-events-none"
         )}
       />
+      {showImagesSlider &&
+        Object.values(imagesLoaded).some((loaded) => !loaded) && (
+          <div className="fixed left-1/2 top-1/2 z-40 -translate-x-1/2 -translate-y-1/2">
+            <Loader textColor="light" />
+          </div>
+        )}
       <AnimatePresence>
         {showImagesSlider && (
           <motion.div
