@@ -28,6 +28,7 @@ async function Projects() {
                 previewImage={project.previewImage}
                 previewUrl={project.previewUrl}
                 sourceUrl={project.sourceUrl}
+                figmaUrl={project.figmaUrl}
               />
             );
           })}

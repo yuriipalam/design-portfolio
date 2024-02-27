@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useHover } from "@react-hooks-library/core";
 import classNames from "classnames";
-import { Code2, EyeIcon, GlobeIcon } from "lucide-react";
+import { Code2, EyeIcon, Figma, GlobeIcon } from "lucide-react";
 import { PreviewAction } from "@/app/(portfolio)/_components/project-card/preview-action";
 import { motion } from "framer-motion";
 import Link from "next/link";
@@ -17,6 +17,7 @@ interface PreviewImageProps {
   alt: string;
   previewUrl?: string;
   sourceUrl?: string;
+  figmaUrl?: string;
 }
 
 export function PreviewImage(props: PreviewImageProps) {
@@ -61,6 +62,13 @@ export function PreviewImage(props: PreviewImageProps) {
             <Link href={props.sourceUrl} target="_blank">
               <PreviewAction isVisible={isHovered}>
                 <Code2 strokeWidth={1} className="text-slate-200" />
+              </PreviewAction>
+            </Link>
+          )}
+          {props.figmaUrl && (
+            <Link href={props.figmaUrl} target="_blank">
+              <PreviewAction isVisible={isHovered}>
+                <Figma strokeWidth={1} className="text-slate-200" />
               </PreviewAction>
             </Link>
           )}

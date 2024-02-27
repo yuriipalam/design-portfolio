@@ -3,6 +3,23 @@ import { type SchemaTypeDefinition } from "sanity";
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     {
+      name: "site-settings",
+      type: "document",
+      title: "Site Settings",
+      fields: [
+        {
+          name: "title",
+          type: "string",
+          title: "Title"
+        },
+        {
+          name: "description",
+          type: "text",
+          title: "Description"
+        }
+      ]
+    },
+    {
       name: "profile",
       type: "document",
       title: "Profile Info",
@@ -69,6 +86,12 @@ export const schema: { types: SchemaTypeDefinition[] } = {
           name: "sourceUrl",
           type: "url",
           title: "Source URL",
+          validation: (Rule) => Rule.optional()
+        },
+        {
+          name: "figmaUrl",
+          type: "url",
+          title: "Figma URL",
           validation: (Rule) => Rule.optional()
         },
         {

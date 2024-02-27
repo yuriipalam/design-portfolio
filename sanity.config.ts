@@ -25,8 +25,16 @@ export default defineConfig({
             S.listItem()
               .title("Profile Info")
               .child(S.document().schemaType("profile").documentId("profile")),
+            S.listItem()
+              .title("Site Settings (metadata)")
+              .child(
+                S.document()
+                  .schemaType("site-settings")
+                  .documentId("site-settings")
+              ),
             ...S.documentTypeListItems().filter(
-              (listItem) => !["profile"].includes(listItem.getId() ?? "")
+              (listItem) =>
+                !["profile", "site-settings"].includes(listItem.getId() ?? "")
             )
           ])
     }),

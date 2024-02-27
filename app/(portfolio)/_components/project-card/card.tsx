@@ -8,6 +8,7 @@ interface ProjectCardProps {
   description: string;
   previewUrl?: string;
   sourceUrl?: string;
+  figmaUrl?: string;
 }
 
 function ProjectCard(props: ProjectCardProps) {
@@ -19,6 +20,7 @@ function ProjectCard(props: ProjectCardProps) {
         alt={props.title}
         previewUrl={props.previewUrl}
         sourceUrl={props.sourceUrl}
+        figmaUrl={props.figmaUrl}
       />
       <div className="flex max-w-[90%] flex-col pl-1">
         <Typography className="font-medium">{props.title}</Typography>
