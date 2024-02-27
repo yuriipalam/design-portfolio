@@ -59,6 +59,31 @@ function ImagesSlider() {
     transition: { duration: 0.2 }
   };
 
+  const imagesRef = useRef<(HTMLImageElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (showImagesSlider) {
+        const isOutside = imagesRef.current
+          ?.filter((ref) => ref !== null)
+          .every((ref) => {
+            return ref && !ref.contains(event.target as Node);
+          });
+
+        if (isOutside) {
+          useImagesSliderStore.setState({ showImagesSlider: false });
+          useImagesSliderStore.setState({ images: [] });
+        }
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [showImagesSlider, imagesRef]);
+
   return (
     <>
       <motion.div
@@ -97,19 +122,27 @@ function ImagesSlider() {
                   {projectImages.map((src, index) => {
                     return (
                       <div key={index} className="relative">
-                        <div
-                          className={classNames(
-                            "absolute h-full w-full transition-opacity duration-200",
-                            imagesLoaded[index] ? "opacity-0" : "opacity-100"
+                        <AnimatePresence>
+                          {!imagesLoaded[index] && (
+                            <motion.div
+                              initial={{ opacity: 0 }}
+                              animate={{ opacity: 1 }}
+                              exit={{ opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="absolute h-full w-full"
+                            >
+                              <Skeleton
+                                className={classNames(
+                                  "h-full w-full rounded-3xl bg-neutral-900/50"
+                                )}
+                              />
+                            </motion.div>
                           )}
-                        >
-                          <Skeleton
-                            className={classNames(
-                              "h-full w-full rounded-3xl bg-neutral-900/50"
-                            )}
-                          />
-                        </div>
+                        </AnimatePresence>
                         <Image
+                          ref={(re) =>
+                            (imagesRef.current[index] = re as HTMLImageElement)
+                          }
                           src={src}
                           width={1280}
                           height={720}
