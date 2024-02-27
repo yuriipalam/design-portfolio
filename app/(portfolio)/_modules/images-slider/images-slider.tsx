@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useClickOutsideForMany } from "@/app/(portfolio)/_hooks";
+import { Loader } from "@/app/(portfolio)/_ui/loader";
 
 function ImagesSlider() {
   useEffect(() => {
@@ -101,6 +102,11 @@ function ImagesSlider() {
             <div className="fixed left-0 top-0 z-10 h-screen w-screen overflow-y-auto">
               <div className="flex flex-col items-center px-12">
                 <div className="my-8 flex max-w-[1280px] flex-col gap-8 md:my-12 md:gap-12">
+                  {projectImages.length === 0 && showImagesSlider && (
+                    <div className="fixed left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2">
+                      <Loader textColor="light" />
+                    </div>
+                  )}
                   {projectImages.map((src, index) => {
                     return (
                       <div key={index} className="relative">
