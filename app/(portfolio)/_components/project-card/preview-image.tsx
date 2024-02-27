@@ -43,8 +43,8 @@ export function PreviewImage(props: PreviewImageProps) {
       >
         <div className={classNames("z-10 flex gap-4")}>
           {props.previewUrl && (
-            <Link href={props.previewUrl} target="_blank">
-              <PreviewAction isVisible={isHovered}>
+            <Link href={props.previewUrl} target="_blank" aria-label="Open demo website">
+              <PreviewAction isVisible={isHovered} arialLabel="Open demo website">
                 <GlobeIcon strokeWidth={1} className="text-slate-200" />
               </PreviewAction>
             </Link>
@@ -55,19 +55,20 @@ export function PreviewImage(props: PreviewImageProps) {
               fetchImages();
               useImagesSliderStore.setState({ showImagesSlider: true });
             }}
+            arialLabel="Open image slider"
           >
             <EyeIcon strokeWidth={1} className="text-slate-200" />
           </PreviewAction>
           {props.sourceUrl && (
-            <Link href={props.sourceUrl} target="_blank">
-              <PreviewAction isVisible={isHovered}>
+            <Link href={props.sourceUrl} target="_blank" aria-label="Open source code">
+              <PreviewAction isVisible={isHovered} arialLabel="Open source code">
                 <Code2 strokeWidth={1} className="text-slate-200" />
               </PreviewAction>
             </Link>
           )}
           {props.figmaUrl && (
-            <Link href={props.figmaUrl} target="_blank">
-              <PreviewAction isVisible={isHovered}>
+            <Link href={props.figmaUrl} target="_blank" aria-label="Open on Figma">
+              <PreviewAction isVisible={isHovered} arialLabel="Open on Figma">
                 <Figma strokeWidth={1} className="text-slate-200" />
               </PreviewAction>
             </Link>

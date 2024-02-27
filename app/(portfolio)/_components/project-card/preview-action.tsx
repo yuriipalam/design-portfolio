@@ -4,6 +4,7 @@ interface PreviewActionsProps {
   isVisible: boolean;
   onClick?: () => void;
   children: React.ReactNode;
+  arialLabel: string;
 }
 
 export function PreviewAction(props: PreviewActionsProps) {
@@ -17,6 +18,7 @@ export function PreviewAction(props: PreviewActionsProps) {
       }}
       onClick={props.onClick}
       className="flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-slate-200 hover:cursor-pointer"
+      aria-label={props.arialLabel}
     >
       {props.children}
     </motion.button>
