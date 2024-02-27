@@ -5,6 +5,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { client } from "@/sanity/lib/client";
 
 export async function generateMetadata(
+  { params, searchParams }: any,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const meta = await client.fetch(
