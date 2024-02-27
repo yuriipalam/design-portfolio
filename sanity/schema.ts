@@ -1,3 +1,4 @@
+import { orderRankField } from "@sanity/orderable-document-list";
 import { type SchemaTypeDefinition } from "sanity";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
@@ -66,6 +67,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
       type: "document",
       title: "Project",
       fields: [
+        orderRankField({ type: "project" }),
         {
           name: "title",
           type: "string",

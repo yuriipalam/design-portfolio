@@ -5,7 +5,7 @@ import { ProjectType } from "@/app/(portfolio)/_entities/project/model";
 
 async function getProjects(): Promise<ProjectType[] | undefined> {
   return await client.fetch(
-    `*[_type == "project"]{_id, title, description, "previewImage": previewImage.asset->url, previewUrl, sourceUrl, figmaUrl}`
+    `*[_type == "project"]|order(orderRank){_id, title, description, "previewImage": previewImage.asset->url, previewUrl, sourceUrl, figmaUrl}`
   );
 }
 
