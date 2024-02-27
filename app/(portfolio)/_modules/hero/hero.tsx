@@ -45,6 +45,7 @@ function Hero(props: HeroProps) {
         <Image
           priority
           src={props.profile.pictureUrl}
+          quality={100}
           width={600}
           height={600}
           alt={props.profile.name + " profile picture"}

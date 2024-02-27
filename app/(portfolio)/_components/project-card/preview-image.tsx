@@ -30,7 +30,7 @@ export function PreviewImage(props: PreviewImageProps) {
     );
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative [filter:drop-shadow(0px_0px_10px_#00000024)]" ref={ref}>
       <motion.div
         className={classNames(
           "absolute flex h-full w-full items-center justify-center rounded-3xl bg-black/50 backdrop-blur-sm"

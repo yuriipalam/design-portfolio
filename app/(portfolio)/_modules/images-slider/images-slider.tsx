@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import { X } from "lucide-react";
 import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
-import { Skeleton } from "@/components/ui/skeleton";
+import { Skeleton } from "@/app/(portfolio)/_ui/skeleton";
 import { Loader } from "@/app/(portfolio)/_ui/loader";
 
 function ImagesSlider() {
@@ -144,6 +144,7 @@ function ImagesSlider() {
                             (imagesRef.current[index] = re as HTMLImageElement)
                           }
                           src={src}
+                          quality={100}
                           width={1280}
                           height={720}
                           alt={"Preview " + index + 1}
