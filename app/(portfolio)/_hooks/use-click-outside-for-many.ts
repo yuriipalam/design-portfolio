@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef } from "react";
+import { RefObject, useCallback, useEffect } from "react";
 import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
 
 const useClickOutsideForMany = (
@@ -6,13 +6,15 @@ const useClickOutsideForMany = (
   callback: () => void
 ): void => {
   const handleClickOutside = (event: MouseEvent) => {
+    console.log(imageRefs.current);
     const isOutside = imageRefs.current?.every((refElement) => {
       return refElement && !refElement.contains(event.target as Node);
     });
+
     if (isOutside) {
-      callback();
-      useImagesSliderStore.setState({ images: [] });
-      useImagesSliderStore.setState({ showImagesSlider: false });
+      return callback();
+      // useImagesSliderStore.setState({ images: [] });
+      // useImagesSliderStore.setState({ showImagesSlider: false });
     }
   };
 
@@ -21,7 +23,7 @@ const useClickOutsideForMany = (
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, []);
+  }, [handleClickOutside]);
 };
 
 export { useClickOutsideForMany };

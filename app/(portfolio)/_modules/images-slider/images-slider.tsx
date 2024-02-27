@@ -7,7 +7,6 @@ import classNames from "classnames";
 import { X } from "lucide-react";
 import { useImagesSliderStore } from "@/app/(portfolio)/_entities/project/model";
 import { Skeleton } from "@/components/ui/skeleton";
-import { useClickOutsideForMany } from "@/app/(portfolio)/_hooks";
 import { Loader } from "@/app/(portfolio)/_ui/loader";
 
 function ImagesSlider() {
@@ -50,18 +49,6 @@ function ImagesSlider() {
   useEffect(() => {
     document.body.classList.toggle("overflow-hidden", showImagesSlider);
   }, [showImagesSlider]);
-
-  const imageRefs = useRef<(HTMLDivElement | null)[]>([]);
-  useEffect(() => {
-    imageRefs.current = projectImages.map(
-      (_, i) => imageRefs.current[i] || null
-    );
-  }, [projectImages]);
-
-  useClickOutsideForMany(imageRefs, () => {
-    useImagesSliderStore.setState({ images: [] });
-    useImagesSliderStore.setState({ showImagesSlider: false });
-  });
 
   const animationConfig = {
     initial: { opacity: 0 },
@@ -123,7 +110,6 @@ function ImagesSlider() {
                           />
                         </div>
                         <Image
-                          ref={(el) => (imageRefs.current[index] = el)}
                           src={src}
                           width={1280}
                           height={720}
