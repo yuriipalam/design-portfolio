@@ -4,6 +4,8 @@ import { ClientSideProfileContactStateInitializer } from "@/app/(portfolio)/_ent
 import type { Metadata, ResolvingMetadata } from "next";
 import { client } from "@/sanity/lib/client";
 
+export const revalidate = 60;
+
 export async function generateMetadata(
   { params, searchParams }: any,
   parent: ResolvingMetadata
