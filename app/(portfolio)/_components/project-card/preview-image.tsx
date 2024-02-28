@@ -77,7 +77,7 @@ export function PreviewImage(props: PreviewImageProps) {
       </motion.div>
       <Image
         src={props.src}
-        quality={90}
+        quality={100}
         width={300}
         height={300}
         alt={props.alt}
